@@ -56,6 +56,9 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    acts_as_paranoid (0.7.0)
+      activerecord (>= 5.2, < 7.0)
+      activesupport (>= 5.2, < 7.0)
     bcrypt (3.1.16)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
@@ -160,6 +163,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_paranoid
   bootsnap (>= 1.4.2)
   byebug
   devise

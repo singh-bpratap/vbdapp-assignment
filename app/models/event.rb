@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
   enum status: [:draft, :published]
 
+  acts_as_paranoid
+
   belongs_to :user
 
   validates :name, :description, :location, presence: true, if: Proc.new {|e| e.published?}
