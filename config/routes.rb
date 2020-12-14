@@ -5,4 +5,12 @@ Rails.application.routes.draw do
       devise_for :users, :controllers => {registrations: 'api/v1/registrations'}
     end
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [] do
+        resources :events
+      end
+    end
+  end
 end
