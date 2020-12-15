@@ -45,5 +45,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Authentication
 gem 'devise'
+gem 'simple_token_authentication'
 
+# Soft delete a record
 gem 'acts_as_paranoid'

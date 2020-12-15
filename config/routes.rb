@@ -11,6 +11,10 @@ Rails.application.routes.draw do
       resources :users, only: [] do
         resources :events
       end
+
+      devise_scope :user do
+        post "sign_in", to: "sessions#create"
+      end
     end
   end
 end
