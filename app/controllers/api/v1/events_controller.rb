@@ -1,12 +1,11 @@
 module Api
   module V1
     class EventsController < ApiController
-      before_action :set_user
       before_action :set_event, only: [:show, :update, :destroy]
 
       # GET /events
       def index
-        @events = @user.events.all
+        @events = current_user.events.all
 
         render json: @events
       end
@@ -18,7 +17,7 @@ module Api
 
       # POST /events
       def create
-        @event = @user.events.new(event_params)
+        @event = current_user.events.new(event_params)
 
         if @event.save
           render json: @event, status: :created
@@ -49,16 +48,12 @@ module Api
 
       # Use callbacks to share common setup or constraints between actions.
       def set_event
-        @event = @user.events.find(params[:id])
+        @event = current_user.events.find(params[:id])
       end
 
       # Only allow a trusted parameter "white list" through.
       def event_params
         params.require(:event).permit(:start_date, :end_date, :duration, :name, :description, :location, :status)
-      end
-
-      def set_user
-        @user = User.find(params[:user_id])
       end
     end
   end

@@ -8,9 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :users, only: [] do
-        resources :events
-      end
+      resources :events
 
       devise_scope :user do
         post "sign_in", to: "sessions#create"
