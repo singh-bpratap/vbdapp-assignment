@@ -5,7 +5,7 @@ class Event < ApplicationRecord
 
   belongs_to :user
 
-  validates :name, :description, :location, presence: true, if: Proc.new {|e| e.published?}
+  validates :name, :description, :location, presence: true, if: Proc.new {|e| e.status_changed? && e.published?}
   validate :has_running_attributes
 
   before_save :set_missing_running_attribute
