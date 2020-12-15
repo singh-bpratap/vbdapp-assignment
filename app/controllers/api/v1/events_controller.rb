@@ -29,7 +29,7 @@ module Api
       # PATCH/PUT /events/1
       def update
         if @event.update(event_params)
-          render json: @event
+          render json: @event, status: 200
         else
           render json: @event.errors, status: :unprocessable_entity
         end
