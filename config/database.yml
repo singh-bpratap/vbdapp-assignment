@@ -5,24 +5,21 @@ default: &default
 
 development:
   <<: *default
-  host: localhost
-  port: 5432
+  host: db
   username: postgres
   password: postgres
   database: assignment_dev
 
 test:
   <<: *default
-  host: localhost
-  port: 5432
+  host: db
   username: postgres
   password: postgres
   database: assignment_test
 
 production:
   <<: *default
-  host: localhost
-  port: 5432
+  host: db
   username: ENV['DB_USERNAME']
   password: ENV['DB_PASSWORD']
   database: assignment
