@@ -1,23 +1,36 @@
-version: '3.6'
-
+# 1.Specify the compose file format; we're using the last one.
+#   If you're curious, at https://docs.docker.com/compose/compose-file/compose-versioning/
+#   you can find an extensive description on the difference among versions
+version: '3'
+# 2.Specify the list of services that will be built. In our case, app (Ruby on Rails) and web (NGINX)
 services:
-  db:
-    image: postgres:12-alpine
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: postgres
+  # db:
+  #   image: postgres:12-alpine
+  #   volumes:
+  #     - ./tmp/db:/var/lib/postgresql/data
+  #   environment:
+  #     DB_USERNAME: postgres
+  #     DB_PASSWORD: postgres
+
+  app:
+    # Repository URI for our app image
+    image: 264434790367.dkr.ecr.us-west-2.amazonaws.com/docker-demo-app
+    build:
+      # 2.1.Specify the root path
+      context: .
+      # 2.2.From the root path defined in context, here we define where the Dockerfile resides
+      dockerfile: ./docker/app/Dockerfile
+    # depends_on:
+    #   - db
 
   web:
-    build: .
-    volumes:
-      - .:/app
-      - bundle-volume:/home/rails/.rvm/gems/ruby-2.7.1/bin/bundle
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    # Repository URI for our web image
+    image: 264434790367.dkr.ecr.us-west-2.amazonaws.com/docker-demo-web
+    build:
+      context: .
+      dockerfile: ./docker/web/Dockerfile
+    # 2.4.Binds port 80 for public connections
+    links:
+      - app
     ports:
-      - 3000:3000
-    depends_on:
-      - db
-
-volumes:
-  bundle-volume:
+      - 80:80
