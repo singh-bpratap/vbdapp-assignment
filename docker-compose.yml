@@ -13,8 +13,6 @@ services:
   #     DB_PASSWORD: postgres
 
   app:
-    # Repository URI for our app image
-    image: 264434790367.dkr.ecr.us-west-2.amazonaws.com/docker-demo-app
     build:
       # 2.1.Specify the root path
       context: .
@@ -24,8 +22,6 @@ services:
     #   - db
 
   web:
-    # Repository URI for our web image
-    image: 264434790367.dkr.ecr.us-west-2.amazonaws.com/docker-demo-web
     build:
       context: .
       dockerfile: ./docker/web/Dockerfile

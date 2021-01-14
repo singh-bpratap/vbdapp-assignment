@@ -5,7 +5,7 @@ FROM nginx
 RUN apt-get update -qq && apt-get -y install apache2-utils
 
 # Set env variable where NGINX should look for project files
-ENV RAILS_ROOT /var/www/vbdapp-assignment
+ENV RAILS_ROOT /home/rails/vdbapp-assignment
 
 # Set working directory
 WORKDIR $RAILS_ROOT

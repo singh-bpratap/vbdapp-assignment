@@ -9,7 +9,7 @@ RUN apt-get install -y libpq-dev
 RUN gem install bundler --version "2.1.4"
 
 # Set an environment variable for the Rails app root folder
-ENV RAILS_ROOT /var/www/vbdapp-assignment
+ENV RAILS_ROOT /home/rails/vdbapp-assignment
 
 # Create the working directory
 RUN mkdir -p $RAILS_ROOT
