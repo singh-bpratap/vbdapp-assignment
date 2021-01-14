@@ -1,14 +1,18 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.15.0"
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :application, "vdbapp-assignment"
+set :repo_url, "git@github.com:singh-bpratap/vbdapp-assignment.git"
+
+set :rvm_type, :user                     # Defaults to: :auto
+set :rvm_ruby_version, '2.7.1@assignment'      # Defaults to: 'default'
+# set :rvm_user_path, '~/.rvm'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/my_app_name"
+set :deploy_to, "/home/rails/vdbapp-assignment"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh

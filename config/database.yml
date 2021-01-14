@@ -20,6 +20,6 @@ test:
 production:
   <<: *default
   host: localhost
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  username: postgres
+  password: postgres
   database: assignment
