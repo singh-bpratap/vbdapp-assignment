@@ -4,13 +4,12 @@
 version: '3'
 # 2.Specify the list of services that will be built. In our case, app (Ruby on Rails) and web (NGINX)
 services:
-  # db:
-  #   image: postgres:12-alpine
-  #   volumes:
-  #     - ./tmp/db:/var/lib/postgresql/data
-  #   environment:
-  #     DB_USERNAME: postgres
-  #     DB_PASSWORD: postgres
+  db:
+    image: postgres:12-alpine
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
 
   app:
     build:
@@ -18,8 +17,8 @@ services:
       context: .
       # 2.2.From the root path defined in context, here we define where the Dockerfile resides
       dockerfile: ./docker/app/Dockerfile
-    # depends_on:
-    #   - db
+    depends_on:
+      - db
 
   web:
     build:

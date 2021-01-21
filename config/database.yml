@@ -5,21 +5,21 @@ default: &default
 
 development:
   <<: *default
-  host: localhost
+  host: db
   username: postgres
   password: postgres
   database: assignment_dev
 
 test:
   <<: *default
-  host: localhost
+  host: db
   username: postgres
   password: postgres
   database: assignment_test
 
 production:
   <<: *default
-  host: localhost
+  host: db
   username: postgres
   password: postgres
   database: assignment
